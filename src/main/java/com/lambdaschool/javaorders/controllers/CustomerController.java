@@ -38,7 +38,7 @@ public class CustomerController {
 //
 //    //http://localhost:2019/customers/namelike/mes
 //    //http://localhost:2019/customers/namelike/cin
-    @GetMapping(value = "/namelike/{custname}}", produces = "application/json")
+    @GetMapping(value = "/namelike/{custname}", produces = "application/json")
     public ResponseEntity<?> findCustomerByName(@PathVariable String custname)
     {
         List<Customer> rtnList = customerServices.findCustomerByName(custname);

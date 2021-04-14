@@ -52,7 +52,7 @@ public class Customer {
         this.paymentamt = paymentamt;
         this.outstandingamt = outstandingamt;
         this.phone = phone;
-        this.agent = agent;
+        this.agent = agentcode;
     }
 
     public long getCustcode() {

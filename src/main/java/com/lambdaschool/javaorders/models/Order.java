@@ -15,10 +15,6 @@ public class Order {
     private long ordnum;
     private double ordamount;
     private double advanceamount;
-    @ManyToOne
-    @JoinColumn(name = "custcode", nullable = false)
-    @JsonIgnoreProperties(value = "orders", allowSetters = true)
-    private Customer custcode;
     private String orderdescription;
 
 
@@ -29,6 +25,11 @@ public class Order {
     )
     @JsonIgnoreProperties(value = "orders", allowSetters = true)
     private Set<Payment> payments = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "custcode", nullable = false)
+    @JsonIgnoreProperties(value = "orders", allowSetters = true)
+    private Customer customer;
 
     public Order() {
     }
@@ -42,7 +43,7 @@ public class Order {
     public Order(double ordamount, double advanceamount, Customer custcode, String orderdescription) {
         this.ordamount = ordamount;
         this.advanceamount = advanceamount;
-        this.custcode = custcode;
+        this.customer = custcode;
         this.orderdescription = orderdescription;
     }
 
@@ -78,12 +79,12 @@ public class Order {
         this.orderdescription = orderdescription;
     }
 
-    public Customer getCustcode() {
-        return custcode;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustcode(Customer custcode) {
-        this.custcode = custcode;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public Set<Payment> getPayments() {
