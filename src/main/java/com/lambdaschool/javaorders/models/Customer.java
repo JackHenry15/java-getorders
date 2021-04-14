@@ -30,12 +30,12 @@ public class Customer {
     @ManyToOne
     @JoinColumn(name = "agentcode", nullable = false)
     @JsonIgnoreProperties(value = "customers", allowSetters = true)
-    private Agent agentcode;
+    private Agent agent;
 
-    @OneToMany(mappedBy = "custcode",
+    @OneToMany(mappedBy = "customer",
         cascade = CascadeType.ALL,
         orphanRemoval = true)
-    @JsonIgnoreProperties(value = "customers", allowSetters = true)
+    @JsonIgnoreProperties(value = "customer", allowSetters = true)
     private List<Order> orders = new ArrayList<>();
 
     public Customer() {
@@ -52,7 +52,7 @@ public class Customer {
         this.paymentamt = paymentamt;
         this.outstandingamt = outstandingamt;
         this.phone = phone;
-        this.agentcode = agentcode;
+        this.agent = agent;
     }
 
     public long getCustcode() {
@@ -143,12 +143,12 @@ public class Customer {
         this.phone = phone;
     }
 
-    public Agent getAgentcode() {
-        return agentcode;
+    public Agent getAgent() {
+        return agent;
     }
 
-    public void setAgentcode(Agent agentcode) {
-        this.agentcode = agentcode;
+    public void setAgent(Agent agent) {
+        this.agent = agent;
     }
 
     public List<Order> getOrders() {

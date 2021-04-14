@@ -18,14 +18,6 @@ public class CustomerServicesImpl
     @Autowired
     private CustomerRepository custrepos;
 
-
-
-    @Transactional
-    @Override
-    public Customer save(Customer customer) {
-        return custrepos.save(customer);
-    }
-
     @Override
     public List<Customer> findAllCustomers() {
         List<Customer> list = new ArrayList<>();
@@ -36,13 +28,13 @@ public class CustomerServicesImpl
     }
 
     @Override
-    public Customer findCustomerById(long id) {
+    public Customer findCustomerById(long id) throws EntityNotFoundException {
         return custrepos.findById(id)
-                .orElseThrow(()-> new EntityNotFoundException("Customer " + id + " Not Found!"));
+                .orElseThrow(() -> new EntityNotFoundException("Customer " + id + " Not Found"));
     }
-//    @Override
-//    public List<Customer> findCustomerByNameLike(String subname) {
-//        List<Customer> rtnList = custrepos.findByNameContainingIgnoringCase(subname);
-//        return rtnList;
-//    }
+
+    @Override
+    public List<Customer> findCustomerByName(String custname) {
+        return custrepos.findByCustnameContainingIgnoringCase(custname);
+    }
 }

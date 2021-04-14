@@ -32,28 +32,17 @@ public class CustomerController {
     @GetMapping(value = "/customer/{custid}", produces = "application/json")
     public ResponseEntity<?> findCustomerById(@PathVariable long custid)
     {
-        Customer rtnRest = customerServices.findCustomerById(custid);
-        return new ResponseEntity<>(rtnRest, HttpStatus.OK);
+        Customer c = customerServices.findCustomerById(custid);
+        return new ResponseEntity<>(c, HttpStatus.OK);
     }
-//    //http://localhost:2019/customers/customer/77
-//    @GetMapping(value = "/customer/77", produces = "application/json")
-//    public ResponseEntity<?> findCustomerById()
-//    {
-//        List<Customer> rtnList = customerServices.findCustomerById();
-//        return new ResponseEntity<>(rtnList, HttpStatus.OK);
-//    }
+//
 //    //http://localhost:2019/customers/namelike/mes
-//    @GetMapping(value = "/namelike/mes", produces = "application/json")
-//    public ResponseEntity<?> findCustomerById()
-//    {
-//        List<Customer> rtnList = customerServices.findCustomerByNameLike();
-//        return new ResponseEntity<>(rtnList, HttpStatus.OK);
-//    }
 //    //http://localhost:2019/customers/namelike/cin
-//    @GetMapping(value = "/namelike/cin", produces = "application/json")
-//    public ResponseEntity<?> findCustomerByNameLike()
-//    {
-//        List<Customer> rtnList = customerServices.findCustomerByNameLike();
-//        return new ResponseEntity<>(rtnList, HttpStatus.OK);
-//    }
+    @GetMapping(value = "/namelike/{custname}}", produces = "application/json")
+    public ResponseEntity<?> findCustomerByName(@PathVariable String custname)
+    {
+        List<Customer> rtnList = customerServices.findCustomerByName(custname);
+        return new ResponseEntity<>(rtnList, HttpStatus.OK);
+    }
+
 }
