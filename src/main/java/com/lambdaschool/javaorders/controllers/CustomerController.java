@@ -22,7 +22,7 @@ public class CustomerController {
 
     //http://localhost:2019/customers/orders
     @GetMapping(value = "/orders", produces = "application/json")
-    public ResponseEntity<?> listAllOrders()
+    public ResponseEntity<?> listAllCustomers()
     {
         List<Customer> rtnList = customerServices.findAllCustomers();
         return new ResponseEntity<>(rtnList, HttpStatus.OK);

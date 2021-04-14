@@ -12,8 +12,7 @@ import java.util.List;
 public class Customer {
 
     @Id
-    @GeneratedValue
-    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long custcode;
     @Column( nullable = false)
     private String custname;
@@ -41,7 +40,17 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String custname, String custcity, String workingarea, String custcountry, String grade, double openingamt, double receiveamt, double paymentamt, double outstandingamt, String phone, Agent agentcode) {
+    public Customer(String custname,
+                    String custcity,
+                    String workingarea,
+                    String custcountry,
+                    String grade,
+                    double openingamt,
+                    double receiveamt,
+                    double paymentamt,
+                    double outstandingamt,
+                    String phone,
+                    Agent agent) {
         this.custname = custname;
         this.custcity = custcity;
         this.workingarea = workingarea;
@@ -52,7 +61,7 @@ public class Customer {
         this.paymentamt = paymentamt;
         this.outstandingamt = outstandingamt;
         this.phone = phone;
-        this.agent = agentcode;
+        this.agent = agent;
     }
 
     public long getCustcode() {

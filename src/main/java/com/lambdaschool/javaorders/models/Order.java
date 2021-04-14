@@ -10,8 +10,7 @@ import java.util.Set;
 @Table(name = "orders")
 public class Order {
     @Id
-    @GeneratedValue
-    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long ordnum;
     private double ordamount;
     private double advanceamount;
@@ -40,10 +39,14 @@ public class Order {
 //        this.orderdescription = orderdescription;
 //    }
 
-    public Order(double ordamount, double advanceamount, Customer custcode, String orderdescription) {
+    public Order(double ordamount,
+                 double advanceamount,
+                 Customer customer,
+                 String orderdescription)
+    {
         this.ordamount = ordamount;
         this.advanceamount = advanceamount;
-        this.customer = custcode;
+        this.customer = customer;
         this.orderdescription = orderdescription;
     }
 

@@ -11,8 +11,7 @@ import java.util.Set;
 @Table(name = "payments")
 public class Payment {
     @Id
-    @GeneratedValue
-    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long paymentid;
     @Column(unique = true, nullable = false)
     private String type;

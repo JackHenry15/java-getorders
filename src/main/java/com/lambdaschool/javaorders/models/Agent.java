@@ -11,8 +11,7 @@ import java.util.List;
 public class Agent {
 
     @Id
-    @GeneratedValue
-    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long agentcode;
     private String agentname;
     private String workingarea;
@@ -29,7 +28,11 @@ public class Agent {
     public Agent() {
     }
 
-    public Agent(String agentname, String workingarea, double commission, String phone, String country) {
+    public Agent(String agentname,
+                 String workingarea,
+                 double commission,
+                 String phone,
+                 String country) {
         this.agentname = agentname;
         this.workingarea = workingarea;
         this.commission = commission;
@@ -83,5 +86,13 @@ public class Agent {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
     }
 }
